@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>Multi Select Toggle Demo</title>
+
+    <!-- styles -->
+    <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <h4>Multi Select Toggle Demo</h4>
+    </header>
+
+    <!-- main content -->
+    <main id="app">
+        <div v-cloak>
+
+            <!-- all toggle -->
+            <div>
+                <input
+                    type="checkbox"
+                    :id="select-all"
+                    v-model="areAllItemsSelected"
+                    @change="toggleAllItems($event)"
+                />
+                <label :for="select-all">
+                    <b>ALL</b>
+                </label>
+            </div>
+
+            <!-- items -->
+            <div
+                v-for="(item, itemIndex) in items"
+                :key="item.id"
+            >
+                <input
+                    type="checkbox"
+                    :id="`item-${item.id}`"
+                    v-model="item.selected"
+                />
+                <label :for="`item-${item.id}`">
+                    {{ item.title }}
+                </label>
+            </div>
+        </div>
+    </main>
+
+    <!-- scripts -->
+    <script src="dist/vue-3.2.47/vue-3.2.47.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
